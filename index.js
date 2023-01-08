@@ -37,7 +37,7 @@ client.on('message', async (message) => {
     const isGroups = message.from.endsWith('@g.us') ? true : false;
     if ((isGroups && config.groups) || !isGroups) {
         if (message.type == "image") {
-            client.sendMessage(message.from, "*[⏳]* Loading..");
+            client.sendMessage(message.from, "*[⏳]* Sebentar..");
             try {
                 const media = await message.downloadMedia();
                 client.sendMessage(message.from, media, {
@@ -45,20 +45,20 @@ client.on('message', async (message) => {
                     stickerName: config.name, // Sticker Name = Edit in 'config/config.json'
                     stickerAuthor: config.author // Sticker Author = Edit in 'config/config.json'
                 }).then(() => {
-                    client.sendMessage(message.from, "*[✅]* Successfully!");
+                    client.sendMessage(message.from, "*[✅]* Berhasil!");
                 });
             } catch {
-                client.sendMessage(message.from, "*[❎]* Failed!");
+                client.sendMessage(message.from, "*[❎]* Gagal!");
             }
         } else if (message.type == "sticker") {
-            client.sendMessage(message.from, "*[⏳]* Loading..");
+            client.sendMessage(message.from, "*[⏳]* Sebentar..");
             try {
                 const media = await message.downloadMedia();
                 client.sendMessage(message.from, media).then(() => {
-                    client.sendMessage(message.from, "*[✅]* Successfully!");
+                    client.sendMessage(message.from, "*[✅]* Berhasil!");
                 });  
             } catch {
-                client.sendMessage(message.from, "*[❎]* Failed!");
+                client.sendMessage(message.from, "*[❎]* Gagal!");
             }
         } else {
             client.getChatById(message.id.remote).then(async (chat) => {
